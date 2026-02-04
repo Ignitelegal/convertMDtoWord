@@ -1,0 +1,121 @@
+# QUICK START GUIDE
+# Markdown to Word Converter
+
+## Installation (One-Time Setup)
+
+1. Install Python dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
+
+2. Verify installation:
+   ```
+   python md_to_word.py --help
+   ```
+
+## Common Commands
+
+### Convert Without Template
+```bash
+python md_to_word.py your_document.md
+```
+→ Creates: your_document_converted.docx
+
+### Convert With Company Template
+```bash
+python md_to_word.py your_document.md -t company_template.docx
+```
+→ Creates: your_document_converted.docx (with template styles)
+
+### Specify Output Location
+```bash
+python md_to_word.py your_document.md -o output/final_report.docx
+```
+→ Creates: output/final_report.docx
+
+### Full Command (Template + Custom Output)
+```bash
+python md_to_word.py your_document.md -t template.docx -o reports/Q1_Report.docx
+```
+
+## Testing the Sample
+
+Try the included sample:
+```bash
+python md_to_word.py sample_document.md
+```
+
+## Batch Processing Multiple Files
+
+Windows (Command Prompt):
+```cmd
+for %f in (*.md) do python md_to_word.py "%f" -t template.docx
+```
+
+Windows (PowerShell):
+```powershell
+Get-ChildItem *.md | ForEach-Object { python md_to_word.py $_.Name -t template.docx }
+```
+
+Mac/Linux:
+```bash
+for file in *.md; do python md_to_word.py "$file" -t template.docx; done
+```
+
+## Integration with Australian Unity Systems
+
+### NetDocuments Workflow
+1. Export markdown files from NetDocuments
+2. Run conversion: `python md_to_word.py exported_doc.md -t AU_Legal_Template.docx`
+3. Upload converted .docx back to NetDocuments
+
+### iCertis CLM Integration
+1. Extract contract templates as markdown
+2. Convert: `python md_to_word.py contract_template.md -t AU_Contract_Template.docx`
+3. Import formatted template to iCertis
+
+### Email Attachments
+1. Save email content as .md file
+2. Convert: `python md_to_word.py email_content.md`
+3. Attach generated .docx to response
+
+## Troubleshooting Quick Fixes
+
+**Error: Module not found**
+```bash
+pip install python-docx mistune
+```
+
+**Error: Permission denied**
+- Close the output Word document if open
+- Check you have write permission to output directory
+
+**Error: File not found**
+- Use full file path: `python md_to_word.py C:\path\to\file.md`
+- Check current directory: `dir` (Windows) or `ls` (Mac/Linux)
+
+**Styles not applying correctly**
+- Verify template has standard style names (Heading 1, Heading 2, etc.)
+- Use verbose mode: `python md_to_word.py file.md -t template.docx -v`
+
+## Style Customization
+
+Edit the script's `style_map` dictionary (around line 34) to customize:
+
+```python
+self.style_map = {
+    'h1': 'AU Custom Heading 1',  # Change to your style name
+    'h2': 'AU Custom Heading 2',
+    'bullet': 'AU Bullet List',
+    # ... etc
+}
+```
+
+## Support Contacts
+
+For technical assistance:
+- Legal & Governance IT Support
+- Australian Unity Technology Team
+
+---
+Last Updated: February 2026
