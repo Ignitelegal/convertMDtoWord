@@ -1,0 +1,5 @@
+# Markdown to Word Converter Requirements
+# Install with: pip install -r requirements.txt
+
+python-docx>=0.8.11
+mistune>=2.0.5
